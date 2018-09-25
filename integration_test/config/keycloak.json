@@ -1,7 +1,0 @@
-{
-    "realm": "Memeolist",
-    "auth-server-url": "http://localhost:8080/auth",
-    "ssl-required": "external",
-    "resource": "sync-server",
-    "public-client": true
-  }
