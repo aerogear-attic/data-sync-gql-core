@@ -1,5 +1,5 @@
 {
-  "name": "data-sync-gql-core",
+  "name": "@aerogear/data-sync-gql-core",
   "version": "0.0.1",
   "description": "A package to perform execution of graphql for sync modules.",
   "main": "index.js",
