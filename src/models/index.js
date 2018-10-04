@@ -7,19 +7,13 @@ const basename = path.basename(module.filename)
 const db = {}
 
 module.exports = (config) => {
-  let sequelize = null
-
-  if (process.env.NODE_ENV === 'test') {
-    sequelize = new Sequelize('sqlite://:memory:', null, null, { dialect: 'sqlite', logging: false })
-  } else {
-    sequelize = new Sequelize(config.database, config.username, config.password, {
-      host: config.host,
-      port: config.port,
-      dialect: 'postgres',
-      operatorsAliases: false,
-      logging: false
-    })
-  }
+  const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    port: config.port,
+    dialect: 'postgres',
+    operatorsAliases: false,
+    logging: false
+  })
 
   // load all models in current dir
   fs
