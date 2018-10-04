@@ -5,11 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   GraphQLSchema.associate = function (models) {
-    models.GraphQLSchema.hasMany(models.Resolver, { as: 'resolvers' })
-  }
-
-  GraphQLSchema.associate = function (models) {
-    models.GraphQLSchema.hasMany(models.Subscription, { as: 'subscriptions' })
+    models.GraphQLSchema.hasMany(models.Resolver)
+    models.GraphQLSchema.hasMany(models.Subscription)
   }
 
   return GraphQLSchema
