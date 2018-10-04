@@ -4,5 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     schema: DataTypes.TEXT
   })
 
+  GraphQLSchema.associate = function (models) {
+    models.GraphQLSchema.hasMany(models.Resolver, { as: 'resolvers' })
+  }
+
+  GraphQLSchema.associate = function (models) {
+    models.GraphQLSchema.hasMany(models.Subscription, { as: 'subscriptions' })
+  }
+
   return GraphQLSchema
 }
