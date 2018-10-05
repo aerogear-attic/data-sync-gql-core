@@ -4,13 +4,14 @@ const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
 const basename = path.basename(module.filename)
+const { log } = require('../lib/util/logger')
 const db = {}
 
 module.exports = (config) => {
   let sequelize = null
 
   if (config.type === "sqlite" ) {
-    sequelize = new Sequelize('sqlite://:memory:', null, null, { dialect: 'sqlite', logging: false })
+    sequelize = new Sequelize(config.database, config.username, config.password, config.options)
   } else if(config.type === "postgres") {
     sequelize = new Sequelize(config.database, config.username, config.password, {
       host: config.host,
@@ -20,7 +21,7 @@ module.exports = (config) => {
       logging: false
     })
   } else {
-    console.error("Unsupported db type")
+    log.error("Unsupported db type")
     return
   }
 
