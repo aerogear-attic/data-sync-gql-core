@@ -5,7 +5,24 @@ const emptySchemaString = require('./lib/util/emptySchema')
 const { log } = require('./lib/util/logger')
 const Model = require('./models')
 
-class Core {
+export interface Core {
+
+  getModels()
+
+  connectActiveDataSources(dataSources: JSON)
+
+  disconnectActiveDataSources(dataSources: JSON)
+
+  buildSchema(schemaName: String, pubsub: any, schemaDirectives: JSON)
+}
+
+export class Core implements Core {
+
+  public makeExecutableSchema : any;
+  public models: any;
+  public graphQLSchemas: Promise<void>;
+
+
   constructor (config, makeExecutableSchema) {
     this.makeExecutableSchema = makeExecutableSchema
     this.models = Model(config)
