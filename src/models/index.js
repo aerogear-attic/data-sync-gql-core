@@ -8,22 +8,7 @@ const { log } = require('../lib/util/logger')
 const db = {}
 
 module.exports = (config) => {
-  let sequelize = null
-
-  if (config.type === "sqlite" ) {
-    sequelize = new Sequelize(config.database, config.username, config.password, config.options)
-  } else if(config.type === "postgres") {
-    sequelize = new Sequelize(config.database, config.username, config.password, {
-      host: config.host,
-      port: config.port,
-      dialect: 'postgres',
-      operatorsAliases: false,
-      logging: false
-    })
-  } else {
-    log.error("Unsupported db type")
-    return
-  }
+  let sequelize = new Sequelize(config.database, config.username, config.password, config.options)
 
   // load all models in current dir
   fs
