@@ -42,7 +42,9 @@ class Core {
         name: schemaName
       }
     }).then(schema => {
-      return schema.schema
+      if (schema) {
+        return schema.schema
+      }
     })
 
     let dataSourcesJson = await models.DataSource.findAll({raw: true})
