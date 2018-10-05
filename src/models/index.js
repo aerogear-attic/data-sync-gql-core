@@ -9,9 +9,9 @@ const db = {}
 module.exports = (config) => {
   let sequelize = null
 
-  if (process.env.NODE_ENV === 'test') {
+  if (config.type === "sqlite" ) {
     sequelize = new Sequelize('sqlite://:memory:', null, null, { dialect: 'sqlite', logging: false })
-  } else {
+  } else if(config.type === "postgres") {
     sequelize = new Sequelize(config.database, config.username, config.password, {
       host: config.host,
       port: config.port,
@@ -19,6 +19,9 @@ module.exports = (config) => {
       operatorsAliases: false,
       logging: false
     })
+  } else {
+    console.error("Unsupported db type")
+    return
   }
 
   // load all models in current dir
