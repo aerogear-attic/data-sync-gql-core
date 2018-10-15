@@ -1,7 +1,7 @@
 const JSONParse = require('json-parse-safe')
 const { auditLog } = require('../../../lib/util/logger')
 
-function buildPostgresResolver (dataSource, compiledRequestMapping, compiledResponseMapping) {
+export function buildResolver (dataSource, compiledRequestMapping, compiledResponseMapping) {
   return function resolve (obj, args, context, info) {
     return new Promise((resolve, reject) => {
       const dataSourceClient = dataSource.getClient()
@@ -36,8 +36,4 @@ function buildPostgresResolver (dataSource, compiledRequestMapping, compiledResp
       })
     })
   }
-}
-
-module.exports = {
-  buildResolver: buildPostgresResolver
 }

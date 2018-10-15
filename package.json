@@ -2,7 +2,7 @@
   "name": "@aerogear/data-sync-gql-core",
   "version": "0.0.1",
   "description": "A package to perform execution of graphql for sync modules.",
-  "main": "index.js",
+  "main": "/bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.release.json "
@@ -13,8 +13,9 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
+    "tslint-microsoft-contrib": "^5.2.1",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "~3.0.1"
-
   },
   "repository": {
     "url": "https://github.com/aerogear/data-sync-gql-core"
@@ -23,6 +24,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "apollo-server-express": "^2.0.6",
+    "ava": "^0.25.0",
     "axios": "^0.18.0",
     "eslint": "^5.5.0",
     "handlebars": "^4.0.12",
@@ -33,7 +35,11 @@
     "pg-pubsub": "^0.4.0",
     "pino": "^5.5.0",
     "prom-client": "^11.1.1",
+    "reflect-metadata": "^0.1.12",
     "sequelize": "^4.38.0",
-    "sqlite3": "^4.0.2"
+    "sequelize-typescript": "^0.6.6",
+    "sqlite3": "^4.0.2",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-microsoft-contrib": "^5.2.1"
   }
 }

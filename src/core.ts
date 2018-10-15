@@ -1,18 +1,14 @@
-const _ = require('lodash')
+import _ from 'lodash'
 
-const schemaParser = require('./lib/schemaParser')
-const emptySchemaString = require('./lib/util/emptySchema')
-const { log } = require('./lib/util/logger')
-const Model = require('./models')
+import schemaParser from './lib/schemaParser'
+import emptySchemaString from './lib/util/emptySchema'
+import { log } from  './lib/util/logger'
+import Model from './models'
 
 export interface Core {
-
   getModels()
-
   connectActiveDataSources(dataSources: JSON)
-
   disconnectActiveDataSources(dataSources: JSON)
-
   buildSchema(schemaName: String, pubsub: any, schemaDirectives: JSON)
 }
 
