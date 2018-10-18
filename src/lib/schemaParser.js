@@ -11,6 +11,9 @@ module.exports = function (schemaString, dataSourcesJson, resolverMappingsJson, 
   const schema = makeExecutableSchema({
     typeDefs: [schemaString],
     resolvers: resolvers,
+    resolverValidationOptions: {
+      allowResolversNotInSchema: true
+    },
     schemaDirectives
   })
   return {schema, dataSources}
