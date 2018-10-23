@@ -1,5 +1,6 @@
 const _ = require('lodash')
-const { log, buildPath } = require('../util/logger')
+const { log } = require('../util/logger')
+const { buildPath } = require('../util/graphqlPathUtil')
 
 exports.wrapResolverWithHooks = function wrapResolverWithHooks (resolverFn, resolverMapping, httpClient) {
   return (obj, args, context, info) => {
