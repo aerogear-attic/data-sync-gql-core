@@ -1,5 +1,5 @@
-const {Pool} = require('pg')
-const {log} = require('../../util/logger')
+const { Pool } = require('pg')
+const { log } = require('../../util/logger')
 
 const type = 'Postgres'
 

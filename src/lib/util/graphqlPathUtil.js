@@ -21,4 +21,4 @@ function buildPath (path) {
   return pathItems.join('.')
 }
 
-module.exports = {buildPath}
+module.exports = { buildPath }

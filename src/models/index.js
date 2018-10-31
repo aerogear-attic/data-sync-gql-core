@@ -8,6 +8,7 @@ const { log } = require('../lib/util/logger')
 const db = {}
 
 module.exports = (config) => {
+  config.logging = log
   let sequelize = new Sequelize(config.database, config.username, config.password, config.options)
 
   // load all models in current dir

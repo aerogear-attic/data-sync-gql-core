@@ -1,4 +1,4 @@
-const {forEach} = require('lodash')
+const { forEach } = require('lodash')
 
 // data sources we can parse
 const parsers = require('./parsers')

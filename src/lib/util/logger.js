@@ -1,3 +1,3 @@
 const log = require('pino')()
 
-module.exports = {log}
+module.exports = { log }

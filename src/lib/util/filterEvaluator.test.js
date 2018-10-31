@@ -57,28 +57,28 @@ test('it does not try to resolve the string "$" from context', t => {
 })
 
 test('Simplified equals syntax should work with no context field', t => {
-  const exp1 = {'foo': 'foo'}
-  const exp2 = {1: 1}
+  const exp1 = { 'foo': 'foo' }
+  const exp2 = { 1: 1 }
 
   t.truthy(evalWithContext(exp1))
   t.truthy(evalWithContext(exp2))
 
-  const exp3 = {'foo': 'bar'}
-  const exp4 = {1: 2}
+  const exp3 = { 'foo': 'bar' }
+  const exp4 = { 1: 2 }
 
   t.falsy(evalWithContext(exp3))
   t.falsy(evalWithContext(exp4))
 })
 
 test('eq syntax should work with no context field', t => {
-  const exp1 = {'eq': ['foo', 'foo']}
-  const exp2 = {'eq': [1, 1]}
+  const exp1 = { 'eq': ['foo', 'foo'] }
+  const exp2 = { 'eq': [1, 1] }
 
   t.truthy(evalWithContext(exp1))
   t.truthy(evalWithContext(exp2))
 
-  const exp3 = {'eq': ['foo', 'bar']}
-  const exp4 = {'eq': [1, 2]}
+  const exp3 = { 'eq': ['foo', 'bar'] }
+  const exp4 = { 'eq': [1, 2] }
 
   t.falsy(evalWithContext(exp3))
   t.falsy(evalWithContext(exp4))
@@ -96,14 +96,14 @@ test('Simplified equals syntax should work with context field', t => {
     }
   }
 
-  const exp1 = {'$some.nested.field': 'bar'}
-  const exp2 = {'$some.nested.field': '$some.other.field'}
+  const exp1 = { '$some.nested.field': 'bar' }
+  const exp2 = { '$some.nested.field': '$some.other.field' }
 
   t.truthy(evalWithContext(exp1, context))
   t.truthy(evalWithContext(exp2, context))
 
-  const exp3 = {'$some.undefined.field': 'bar'}
-  const exp4 = {'bar': '$some.undefined.field'}
+  const exp3 = { '$some.undefined.field': 'bar' }
+  const exp4 = { 'bar': '$some.undefined.field' }
 
   t.falsy(evalWithContext(exp3))
   t.falsy(evalWithContext(exp4))
@@ -131,8 +131,8 @@ test('eq syntax should work with context field', t => {
 test('basic usage of and syntax works', t => {
   const exp1 = {
     and: [
-      {eq: ['equal', 'equal']},
-      {eq: [1, 1]}
+      { eq: ['equal', 'equal'] },
+      { eq: [1, 1] }
     ]
   }
 
@@ -140,8 +140,8 @@ test('basic usage of and syntax works', t => {
 
   const exp2 = {
     and: [
-      {'equal': 'equal'},
-      {'not': 'equal'}
+      { 'equal': 'equal' },
+      { 'not': 'equal' }
     ]
   }
 
@@ -151,16 +151,16 @@ test('basic usage of and syntax works', t => {
 test('basic usage of or syntax works', t => {
   const exp1 = {
     or: [
-      {eq: ['equal', 'equal']},
-      {eq: ['not', 'equal']}
+      { eq: ['equal', 'equal'] },
+      { eq: ['not', 'equal'] }
     ]
   }
 
   // using simplified equals syntax nested inside another expression
   const exp2 = {
     or: [
-      {'equal': 'equal'},
-      {'not': 'equal'}
+      { 'equal': 'equal' },
+      { 'not': 'equal' }
     ]
   }
 
@@ -169,15 +169,15 @@ test('basic usage of or syntax works', t => {
 
   const exp3 = {
     or: [
-      {eq: ['not', 'equal']},
-      {eq: ['not', 'equal']}
+      { eq: ['not', 'equal'] },
+      { eq: ['not', 'equal'] }
     ]
   }
 
   const exp4 = {
     or: [
-      {'not': 'equal'},
-      {'not': 'equal'}
+      { 'not': 'equal' },
+      { 'not': 'equal' }
     ]
   }
 
@@ -188,15 +188,15 @@ test('basic usage of or syntax works', t => {
 test('advanced nested syntax works', t => {
   const exp1 = {
     and: [
-      {eq: [1, 1]},
+      { eq: [1, 1] },
       {
         or: [
-          {eq: [1, 2]},
-          {eq: ['not', 'equal']},
+          { eq: [1, 2] },
+          { eq: ['not', 'equal'] },
           {
             and: [
-              {eq: ['true', 'true']},
-              {eq: [1, 1]}
+              { eq: ['true', 'true'] },
+              { eq: [1, 1] }
             ]
           }
         ]
@@ -230,8 +230,8 @@ test('and syntax works with context', t => {
 
   const exp1 = {
     and: [
-      {eq: ['$some.nested.field', 'bar']},
-      {eq: [1, '$some.other.field']}
+      { eq: ['$some.nested.field', 'bar'] },
+      { eq: [1, '$some.other.field'] }
     ]
   }
 
@@ -239,8 +239,8 @@ test('and syntax works with context', t => {
 
   const exp2 = {
     and: [
-      {'$some.nested.field': 'bar'},
-      {2: '$some.nested.field'}
+      { '$some.nested.field': 'bar' },
+      { 2: '$some.nested.field' }
     ]
   }
 
@@ -261,16 +261,16 @@ test('or syntax works with context', t => {
 
   const exp1 = {
     or: [
-      {eq: ['$some.nested.field', 'bar']},
-      {eq: ['foo', '$some.nested.field']}
+      { eq: ['$some.nested.field', 'bar'] },
+      { eq: ['foo', '$some.nested.field'] }
     ]
   }
 
   // using simplified equals syntax nested inside another expression
   const exp2 = {
     or: [
-      {'$some.nested.field': 'bar'},
-      {'not': '$some.nested.field'}
+      { '$some.nested.field': 'bar' },
+      { 'not': '$some.nested.field' }
     ]
   }
 
@@ -279,15 +279,15 @@ test('or syntax works with context', t => {
 
   const exp3 = {
     or: [
-      {eq: ['$some.nested.field', 'equal']},
-      {eq: ['not', '$some.nested.field']}
+      { eq: ['$some.nested.field', 'equal'] },
+      { eq: ['not', '$some.nested.field'] }
     ]
   }
 
   const exp4 = {
     or: [
-      {'not': '$some.nested.field'},
-      {'$some.nested.field': 'equal'}
+      { 'not': '$some.nested.field' },
+      { '$some.nested.field': 'equal' }
     ]
   }
 
@@ -309,15 +309,15 @@ test('advanced nested syntax works with context', t => {
 
   const exp1 = {
     and: [
-      {eq: [1, 1]},
+      { eq: [1, 1] },
       {
         or: [
-          {eq: [1, 2]},
-          {eq: ['not', 'equal']},
+          { eq: [1, 2] },
+          { eq: ['not', 'equal'] },
           {
             and: [
-              {eq: ['$some.nested.field', 'bar']},
-              {eq: ['$some.other.field', 1]}
+              { eq: ['$some.nested.field', 'bar'] },
+              { eq: ['$some.other.field', 1] }
             ]
           }
         ]
