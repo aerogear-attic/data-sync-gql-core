@@ -47,8 +47,8 @@ class Core {
       }
     })
 
-    let dataSourcesJson = await models.DataSource.findAll({raw: true})
-    const subscriptionsJson = await models.Subscription.findAll({raw: true})
+    let dataSourcesJson = await models.DataSource.findAll({ raw: true })
+    const subscriptionsJson = await models.Subscription.findAll({ raw: true })
     const resolvers = await models.Resolver.findAll({
       include: [models.DataSource]
     })

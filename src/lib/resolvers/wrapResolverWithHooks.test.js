@@ -1,5 +1,5 @@
-const {test} = require('ava')
-const {wrapResolverWithHooks} = require('./wrapResolverWithHooks')
+const { test } = require('ava')
+const { wrapResolverWithHooks } = require('./wrapResolverWithHooks')
 
 test('it should check the prehoook url', t => {
   // mock arguments for a GraphQL resolver function

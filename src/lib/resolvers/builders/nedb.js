@@ -1,4 +1,5 @@
 const JSONParse = require('json-parse-safe')
+const { log } = require('../../util/logger')
 
 function buildNeDBResolver (dataSource, compiledRequestMapping, compiledResponseMapping) {
   return function resolve (obj, args, context, info) {
@@ -24,7 +25,7 @@ function buildNeDBResolver (dataSource, compiledRequestMapping, compiledResponse
         return reject(parsedQuery.error)
       }
 
-      const {operation, query, doc, options, update} = parsedQuery.value
+      const { operation, query, doc, options, update } = parsedQuery.value
 
       switch (operation) {
         case 'findOne':
@@ -57,7 +58,7 @@ function buildNeDBResolver (dataSource, compiledRequestMapping, compiledResponse
           }
         })
 
-        const {value, error} = JSONParse(responseString)
+        const { value, error } = JSONParse(responseString)
 
         if (error) {
           // TODO better error message back to user when this happens

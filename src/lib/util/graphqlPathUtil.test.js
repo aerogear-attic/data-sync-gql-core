@@ -1,6 +1,6 @@
-const {test} = require('ava')
+const { test } = require('ava')
 
-const {buildPath} = require('./graphqlPathUtil')
+const { buildPath } = require('./graphqlPathUtil')
 
 test('buildPath should never throw error', t => {
   t.is(buildPath(undefined), '')

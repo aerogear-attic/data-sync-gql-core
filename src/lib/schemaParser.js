@@ -7,7 +7,7 @@ module.exports = function (schemaString, dataSourcesJson, resolverMappingsJson, 
   const subscriptionResolvers = subscriptionsMapper(subscriptionMappingsJson, pubsub)
   const dataResolvers = resolverMapper(dataSources, resolverMappingsJson, pubsub)
 
-  const resolvers = {...subscriptionResolvers, ...dataResolvers}
+  const resolvers = { ...subscriptionResolvers, ...dataResolvers }
   const schema = makeExecutableSchema({
     typeDefs: [schemaString],
     resolvers: resolvers,
@@ -16,5 +16,5 @@ module.exports = function (schemaString, dataSourcesJson, resolverMappingsJson, 
     },
     schemaDirectives
   })
-  return {schema, dataSources}
+  return { schema, dataSources }
 }
